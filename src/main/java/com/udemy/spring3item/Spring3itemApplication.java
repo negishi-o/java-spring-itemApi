@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 import com.udemy.spring3item.model.Item;
 import com.udemy.spring3item.repo.ItemRepository;
 
 //implements CommandLineRunnerでrunメソッドを定義可能
 @SpringBootApplication
+//キャシュを利用するのでこのアノテーションを指定する
+@EnableCaching
 public class Spring3itemApplication implements CommandLineRunner{
 
 	@Autowired
