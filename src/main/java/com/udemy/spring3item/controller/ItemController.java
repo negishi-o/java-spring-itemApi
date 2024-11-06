@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.udemy.spring3item.exception.ItemNotFoundException;
+import com.udemy.spring3item.model.HelloMessage;
 import com.udemy.spring3item.model.Item;
 import com.udemy.spring3item.service.ItemService;
 @RestController
@@ -44,5 +45,10 @@ public class ItemController {
 	@DeleteMapping("/items/{itemId}")
 	public void deleteItem(@PathVariable("itemId") Long itemId) {
 		itemService.deleteItem(itemId);
+	}
+	
+	@GetMapping("/callHello")
+	public HelloMessage callHello() {
+		return itemService.getHelloResponse();
 	}
 }

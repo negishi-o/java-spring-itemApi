@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 
 import com.udemy.spring3item.model.Item;
@@ -13,8 +15,14 @@ import com.udemy.spring3item.repo.ItemRepository;
 @SpringBootApplication
 //キャシュを利用するのでこのアノテーションを指定する
 @EnableCaching
-public class Spring3itemApplication implements CommandLineRunner{
+public class Spring3itemApplication extends SpringBootServletInitializer 
+implements CommandLineRunner{
 
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Spring3itemApplication.class);
+	}
+	
 	@Autowired
 	private ItemRepository itemRepository;
 	
